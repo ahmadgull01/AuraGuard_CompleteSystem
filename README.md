@@ -1,6 +1,6 @@
 # AURA Guard
 
-AURA Guard is a Python desktop application for face recognition and liveness-based access control. This final version removes the previous DeepFace, InsightFace, ONNXRuntime, and custom OpenCV fallback recognition engines. Registration and verification now use the same FaceLoginSystem dlib face-recognition logic from the attached project.
+AURA Guard is a Python desktop application for face recognition and liveness-based access control.
 
 ## Recognition Engine
 
@@ -38,12 +38,6 @@ Open the project in PyCharm and run:
 
 ```text
 main.py
-```
-
-Or run the Windows setup file:
-
-```text
-SETUP_AND_RUN_AURA_GUARD.bat
 ```
 
 Recommended Python version:
@@ -94,7 +88,6 @@ The database is created automatically when the application starts. No registered
 This version uses one clean FaceLoginSystem recognition pipeline:
 
 - Active recognition engine: FaceLogin dlib / face_recognition 128D descriptor.
-- Removed old DeepFace, InsightFace, ONNXRuntime and weak compatibility matching from access decisions.
 - Registration saves clean face-crop samples instead of relying on full-frame re-detection later.
 - Encoding uses the GUI/OpenCV validated face box first, then proper dlib/face_recognition fallbacks.
 - Verification never accepts the closest user unless distance, support count and stability checks pass.
@@ -102,8 +95,6 @@ This version uses one clean FaceLoginSystem recognition pipeline:
 - If one registered user exists, an unknown face is still rejected unless it passes the same strict threshold.
 - A debug file named `embedding_debug.txt` is written inside a user sample folder if embedding generation fails.
 
-For best results after switching to this version, re-register users with fresh samples so old experimental embeddings are not reused.
-
 ## Important dependency note
 
-This build does **not** import the external `face_recognition` wrapper package at runtime. The required dlib model files are bundled inside the project folder under `face_recognition_models/`, so the earlier error asking to install `face_recognition_models` should not appear. Keep that folder beside `main.py`.
+This build does **not** import the external `face_recognition` wrapper package at runtime. The required dlib model files are bundled inside the project folder under `face_recognition_models/`, so keep that folder beside `main.py`.
