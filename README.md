@@ -81,7 +81,7 @@ src/
 
 ## Notes
 
-The database is created automatically when the application starts. No registered users or sample face data are included in the first run. If you are using an older local database, the project will migrate settings to FaceLogin-Dlib. Existing old-model embeddings are not used; users should regenerate embeddings from saved samples or re-register with fresh samples.
+The database is created automatically when the application starts. No registered users or sample face data are included in the first run.
 
 ## Final Recognition Rebuild Notes
 
